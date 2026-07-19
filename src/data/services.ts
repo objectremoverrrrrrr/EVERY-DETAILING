@@ -10,7 +10,51 @@ export interface Service {
   type: "single" | "package";
 }
 
+export interface BatchPackage {
+  id: string;
+  tier: number;
+  name: string;
+  vehicles: string;
+  pricePerVehicle: number;
+  travelFee: string;
+  travelFeeNote: string;
+  highlight?: boolean;
+}
+
 export const currencySymbol = "₱";
+
+export const batchPackages: BatchPackage[] = [
+  {
+    id: "small-batch",
+    tier: 1,
+    name: "Small Batch",
+    vehicles: "3 Vehicles",
+    pricePerVehicle: 2600,
+    travelFee: "₱1,500 flat",
+    travelFeeNote: "for outer cities",
+    highlight: false,
+  },
+  {
+    id: "fleet-batch",
+    tier: 2,
+    name: "Fleet Batch",
+    vehicles: "4–5 Vehicles",
+    pricePerVehicle: 2400,
+    travelFee: "50% OFF (₱750)",
+    travelFeeNote: "for outer cities",
+    highlight: false,
+  },
+  {
+    id: "ultimatum",
+    tier: 3,
+    name: "Ultimatum",
+    vehicles: "6+ Vehicles",
+    pricePerVehicle: 2200,
+    travelFee: "COMPLETELY WAIVED",
+    travelFeeNote: "no travel charge",
+    highlight: true,
+  },
+];
 
 export const services: Service[] = [
   {
