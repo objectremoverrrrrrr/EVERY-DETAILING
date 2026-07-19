@@ -142,7 +142,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         )}
       </AnimatePresence>
 
-      {/* Mobile Detailing Disclaimer Modal */}
       <AnimatePresence>
         {isMobileDisclaimerOpen && (
           <>
@@ -232,7 +231,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         )}
       </AnimatePresence>
 
-      {/* Contact / Booking Modal */}
       <AnimatePresence>
         {isOpen && (
           <>
