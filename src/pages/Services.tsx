@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { MapPin, Globe } from "lucide-react";
-import { services, currencySymbol } from "@/data/services";
+import { MapPin, Globe, Building2 } from "lucide-react";
+import { services, batchPackages, currencySymbol } from "@/data/services";
 import { useBooking } from "@/context/BookingContext";
 import { useLocaleCurrency } from "@/hooks/useLocaleCurrency";
 
@@ -163,6 +163,89 @@ export default function Services() {
             </motion.div>
           ))}
         </motion.div>
+      </section>
+
+      <section className="py-0 mt-16">
+        <div className="bg-primary text-white">
+          <div className="container mx-auto px-6 max-w-6xl py-16">
+            <motion.div
+              className="mb-12"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <Building2 className="w-5 h-5 text-white/60" />
+                <span className="text-xs font-semibold tracking-widest uppercase text-white/60 border border-white/20 px-3 py-1">
+                  For Businesses Only
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-3">B2B BATCH PRICING</h2>
+              <p className="text-gray-400 max-w-xl text-sm leading-relaxed">
+                Running a car rental fleet, dealership, or company pool? We offer volume pricing for businesses that need multiple vehicles detailed at once. <strong className="text-white">This is not a standard retail offer</strong> — pricing is per vehicle and scales with your fleet size.
+              </p>
+            </motion.div>
+
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } }}
+            >
+              {batchPackages.map((pkg) => (
+                <motion.div
+                  key={pkg.id}
+                  variants={{ hidden: { y: 16, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.45 } } }}
+                  className={`p-7 flex flex-col border ${pkg.highlight ? "bg-white text-primary border-white" : "bg-white/5 border-white/15 hover:border-white/30 transition-colors"}`}
+                >
+                  <span className={`text-xs font-semibold tracking-widest uppercase mb-4 ${pkg.highlight ? "text-primary/50" : "text-white/40"}`}>
+                    Tier {pkg.tier}
+                  </span>
+                  <h3 className={`text-2xl font-bold mb-1 ${pkg.highlight ? "text-primary" : "text-white"}`}>
+                    {pkg.name}
+                  </h3>
+                  <p className={`text-sm mb-5 ${pkg.highlight ? "text-primary/60" : "text-white/50"}`}>
+                    {pkg.vehicles}
+                  </p>
+                  <div className="mb-6">
+                    <p className={`text-4xl font-light mb-1 ${pkg.highlight ? "text-primary" : "text-white"}`}>
+                      {currencySymbol}{pkg.pricePerVehicle.toLocaleString()}
+                    </p>
+                    <p className={`text-xs uppercase tracking-widest ${pkg.highlight ? "text-primary/50" : "text-white/40"}`}>
+                      per vehicle
+                    </p>
+                  </div>
+                  <div className={`mt-auto pt-5 border-t ${pkg.highlight ? "border-primary/20" : "border-white/10"}`}>
+                    <p className={`text-xs font-semibold uppercase tracking-wider mb-0.5 ${pkg.highlight ? "text-primary/60" : "text-white/40"}`}>
+                      Travel Fee
+                    </p>
+                    <p className={`text-sm font-bold ${pkg.highlight ? "text-primary" : "text-white"}`}>
+                      {pkg.travelFee}
+                    </p>
+                    <p className={`text-xs ${pkg.highlight ? "text-primary/50" : "text-white/40"}`}>
+                      {pkg.travelFeeNote}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              <p className="text-sm text-white/50 flex-1">
+                Batch bookings are handled directly — contact us to discuss your fleet size, schedule, and location before booking.
+              </p>
+              <a
+                href="tel:"
+                className="bg-white text-primary px-8 py-3 text-xs font-semibold tracking-widest uppercase hover:bg-gray-100 transition-colors text-center whitespace-nowrap"
+                data-testid="btn-b2b-contact"
+              >
+                Inquire Now
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="py-12 container mx-auto px-6 max-w-6xl border-t border-border">
