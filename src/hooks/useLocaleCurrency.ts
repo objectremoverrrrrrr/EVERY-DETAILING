@@ -86,7 +86,6 @@ export function useLocaleCurrency(): CurrencyInfo {
       return;
     }
 
-    // Use IP geolocation for accurate country detection regardless of browser language
     fetch("https://api.country.is/")
       .then((res) => res.json())
       .then((data: { country?: string }) => {
@@ -94,7 +93,6 @@ export function useLocaleCurrency(): CurrencyInfo {
         setCurrency(REGION_CURRENCY_MAP[region] ?? FALLBACK);
       })
       .catch(() => {
-        // Fallback: derive from browser language if IP lookup fails
         try {
           const locale = navigator.language || "en-PH";
           const region = new Intl.Locale(locale).region?.toUpperCase() ?? "";
