@@ -1,10 +1,11 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { BookingProvider } from "@/context/BookingContext";
 import Layout from "@/components/Layout";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const Home        = lazy(() => import("@/pages/Home"));
 const About       = lazy(() => import("@/pages/About"));
@@ -41,13 +42,18 @@ function Router() {
 }
 
 function App() {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <BookingProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
+          <LoadingScreen onDone={() => setLoaded(true)} />
+          {loaded && (
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+              <Router />
+            </WouterRouter>
+          )}
           <Toaster />
         </BookingProvider>
       </TooltipProvider>
