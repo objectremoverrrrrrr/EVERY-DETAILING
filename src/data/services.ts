@@ -19,6 +19,9 @@ export interface BatchPackage {
   travelFee: string;
   travelFeeNote: string;
   highlight?: boolean;
+  description: string;
+  included: string[];
+  perks: string[];
 }
 
 export const currencySymbol = "₱";
@@ -33,6 +36,21 @@ export const batchPackages: BatchPackage[] = [
     travelFee: "₱1,500 flat",
     travelFeeNote: "for outer cities",
     highlight: false,
+    description:
+      "Built for small businesses, private groups, or offices with a handful of vehicles. We arrive on-site and detail all three in a single scheduled session — no repeated trips, no hassle.",
+    included: [
+      "Exterior hand wash",
+      "Tire & wheel clean",
+      "Window clean (in & out)",
+      "Interior vacuum",
+      "Dashboard & door panel wipe",
+      "Air freshener",
+    ],
+    perks: [
+      "Single on-site session",
+      "Flexible scheduling",
+      "Dedicated technician per vehicle",
+    ],
   },
   {
     id: "fleet-batch",
@@ -43,6 +61,21 @@ export const batchPackages: BatchPackage[] = [
     travelFee: "50% OFF (₱750)",
     travelFeeNote: "for outer cities",
     highlight: false,
+    description:
+      "Designed for growing car rentals, office pools, and small dealerships. A deeper clean than Tier 1 at a lower per-vehicle rate, with travel costs cut in half for outer-city locations.",
+    included: [
+      "Everything in Tier 1",
+      "Deep seat wipe & fabric care",
+      "Engine bay exterior wipe-down",
+      "Cup holder & console deep clean",
+      "Streak-free glass polish",
+      "Tire dressing",
+    ],
+    perks: [
+      "Priority scheduling slot",
+      "50% off outer-city travel fee",
+      "Two-technician team for faster turnaround",
+    ],
   },
   {
     id: "ultimatum",
@@ -53,6 +86,24 @@ export const batchPackages: BatchPackage[] = [
     travelFee: "COMPLETELY WAIVED",
     travelFeeNote: "no travel charge",
     highlight: true,
+    description:
+      "Our flagship fleet program for large dealerships, rental companies, and corporate fleets. The lowest per-vehicle rate, zero travel fees, and a full detail treatment — we leave every vehicle showroom-ready.",
+    included: [
+      "Full Complete Detail per vehicle",
+      "Seat shampooing & carpet extraction",
+      "Leather conditioning",
+      "Clay bar decontamination",
+      "Wax & paint protection",
+      "Interior odor treatment",
+      "Headlight restoration",
+      "Final inspection & touch-up",
+    ],
+    perks: [
+      "Zero travel fee — anywhere",
+      "Dedicated account contact",
+      "Multi-day scheduling available",
+      "Post-service condition report per vehicle",
+    ],
   },
 ];
 
