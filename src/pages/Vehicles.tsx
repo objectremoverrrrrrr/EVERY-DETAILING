@@ -46,7 +46,7 @@ const itemVariants = {
 
 export default function Vehicles() {
   return (
-    <div className="w-full pb-32">
+    <div className="w-full">
       {/* Hero */}
       <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-6 max-w-4xl">
