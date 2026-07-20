@@ -206,10 +206,12 @@ export default function Services() {
                   <h3 className={`text-2xl font-bold mb-1 ${pkg.highlight ? "text-primary" : "text-white"}`}>
                     {pkg.name}
                   </h3>
-                  <p className={`text-sm mb-5 ${pkg.highlight ? "text-primary/60" : "text-white/50"}`}>
+                  <p className={`text-sm mb-3 ${pkg.highlight ? "text-primary/60" : "text-white/50"}`}>
                     {pkg.vehicles}
                   </p>
-                  <div className="mb-6">
+
+                  {/* Price */}
+                  <div className="mb-5">
                     <p className={`text-4xl font-light mb-1 ${pkg.highlight ? "text-primary" : "text-white"}`}>
                       {currencySymbol}{pkg.pricePerVehicle.toLocaleString()}
                     </p>
@@ -217,6 +219,43 @@ export default function Services() {
                       per vehicle
                     </p>
                   </div>
+
+                  {/* Description */}
+                  <p className={`text-sm leading-relaxed mb-6 ${pkg.highlight ? "text-primary/70" : "text-white/60"}`}>
+                    {pkg.description}
+                  </p>
+
+                  {/* What's included */}
+                  <div className="mb-5">
+                    <p className={`text-xs font-semibold uppercase tracking-wider mb-3 ${pkg.highlight ? "text-primary/60" : "text-white/40"}`}>
+                      Included per vehicle
+                    </p>
+                    <ul className="space-y-1.5">
+                      {pkg.included.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <span className={`mt-0.5 shrink-0 text-xs ${pkg.highlight ? "text-primary" : "text-white"}`}>✓</span>
+                          <span className={`text-xs leading-relaxed ${pkg.highlight ? "text-primary/80" : "text-white/70"}`}>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Perks */}
+                  <div className="mb-6">
+                    <p className={`text-xs font-semibold uppercase tracking-wider mb-3 ${pkg.highlight ? "text-primary/60" : "text-white/40"}`}>
+                      Tier perks
+                    </p>
+                    <ul className="space-y-1.5">
+                      {pkg.perks.map((perk) => (
+                        <li key={perk} className="flex items-start gap-2">
+                          <span className={`mt-0.5 shrink-0 text-xs ${pkg.highlight ? "text-primary" : "text-white"}`}>★</span>
+                          <span className={`text-xs leading-relaxed ${pkg.highlight ? "text-primary/80" : "text-white/70"}`}>{perk}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Travel fee */}
                   <div className={`mt-auto pt-5 border-t ${pkg.highlight ? "border-primary/20" : "border-white/10"}`}>
                     <p className={`text-xs font-semibold uppercase tracking-wider mb-0.5 ${pkg.highlight ? "text-primary/60" : "text-white/40"}`}>
                       Travel Fee
